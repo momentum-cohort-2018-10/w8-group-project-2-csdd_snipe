@@ -8,6 +8,8 @@ django = "*"
 "psycopg2" = "*"
 django-extensions = "*"
 django-debug-toolbar = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 
