@@ -1,0 +1,1 @@
+web: gunicorn w8-group-project-2-csdd_snipe.wsgi
