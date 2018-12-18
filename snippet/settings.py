@@ -38,8 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',  # new
+    # thirdparty apps
+    'django_extensions',
+    'debug_toolbar',
+    'allauth',  # new
+    'allauth.account',  # new
+    'allauth.socialaccount',  # new
+    'allauth.socialaccount.providers.github',  # new
+    # 'allauth.socialaccount.providers.google',  # new
+    # 'allauth.socialaccount.providers.facebook',  # new
 
-    #our apps
+    # our apps
     'core',
 ]
 
@@ -51,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'snippet.urls'
@@ -126,5 +137,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'core.User'
+
+
+# for django-allauth
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = 'home'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
