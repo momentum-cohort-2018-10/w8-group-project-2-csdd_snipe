@@ -10,6 +10,7 @@ django-extensions = "*"
 django-debug-toolbar = "*"
 gunicorn = "*"
 django-heroku = "*"
+django-allauth = "*"
 
 [dev-packages]
 

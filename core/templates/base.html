@@ -7,11 +7,31 @@
   <title>CodeSnippets</title>
  
 </head>
-<header>
+{% block title %}
 
-                    <h1>Snip>pet</h2>
+<h1>Snip>pet</h1>
 
-</header>
+{% endblock title %}
+
+ {% block header %}
+{% load socialaccount %}
+
+
+{% if user.is_authenticated %}
+<p>Welcome {{ user.username }} !!!</p>
+{% else %}
+<a href="{% provider_login_url 'github' %}">Sign Up</a>
+{% endif %} 
+
+
+
+
+
+
+
+
+{% endblock header %}
+
 <body>
 
 
