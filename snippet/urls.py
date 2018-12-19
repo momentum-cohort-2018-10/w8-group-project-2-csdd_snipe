@@ -19,7 +19,8 @@ from django.urls import path, include
 from core import views
 
 urlpatterns = [
-    path("", views.index, name="home"),
+    # path("", views.index, name="home"),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path("", views.tempIndex, name="temphome"),
 ]
