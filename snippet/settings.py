@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',  # new
     # 'allauth.socialaccount.providers.google',  # new
     # 'allauth.socialaccount.providers.facebook',  # new
-
+    'rest_framework',
     # our apps
     'core',
 ]
