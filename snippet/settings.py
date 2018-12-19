@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',  # new
+    # 'django.contrib.sites',  # new
     # thirdparty apps
     'django_extensions',
     'debug_toolbar',
