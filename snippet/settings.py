@@ -42,10 +42,10 @@ INSTALLED_APPS = [
     # thirdparty apps
     'django_extensions',
     'debug_toolbar',
-    'allauth',  # new
-    'allauth.account',  # new
-    'allauth.socialaccount',  # new
-    'allauth.socialaccount.providers.github',  # new
+    # 'allauth',  # new
+    # 'allauth.account',  # new
+    # 'allauth.socialaccount',  # new
+    # 'allauth.socialaccount.providers.github',  # new
     # 'allauth.socialaccount.providers.google',  # new
     # 'allauth.socialaccount.providers.facebook',  # new
     'rest_framework',
