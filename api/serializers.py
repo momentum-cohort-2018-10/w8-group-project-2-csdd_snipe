@@ -7,7 +7,7 @@ class SnippetSerializer(serializers.ModelSerializer):
         slug_field="username", read_only=True)
     content = serializers.CharField(
         max_length=None, min_length=None, allow_blank=False, trim_whitespace=True)
-    language = serializers.CharField(read_only=True)
+    language = serializers.CharField(max_length=40, allow_blank=False)
     queryset = Snippet.objects.all()
 
     class Meta:
@@ -16,5 +16,6 @@ class SnippetSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    model = User
-    fields = ("username",)
+    class Meta:
+        model = User
+        fields = ("username",)

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',  # new
+    # 'django.contrib.sites',  # new
     # thirdparty apps
     'django_extensions',
     'debug_toolbar',
@@ -147,4 +147,12 @@ REST_FRAMEWORK = {
 
 }
 
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'testing@example.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+EMAIL_PORT = 1025
