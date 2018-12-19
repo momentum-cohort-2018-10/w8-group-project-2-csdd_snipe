@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 
     # our apps
     'core',
-    'api'
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -72,7 +72,7 @@ ROOT_URLCONF = 'snippet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -159,3 +159,5 @@ REST_FRAMEWORK = {
 
 
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
