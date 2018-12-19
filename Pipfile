@@ -11,6 +11,8 @@ django-debug-toolbar = "*"
 gunicorn = "*"
 django-heroku = "*"
 djangorestframework = "*"
+pygments = "*"
+djangorestframework = "*"
 django-filter = "*"
 django-registration-redux = "*"
 
