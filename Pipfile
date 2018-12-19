@@ -11,6 +11,8 @@ django-debug-toolbar = "*"
 gunicorn = "*"
 django-heroku = "*"
 django-allauth = "*"
+djangorestframework = "*"
+django-filter = "*"
 
 [dev-packages]
 

@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     # thirdparty apps
     'django_extensions',
     'debug_toolbar',
+    'rest_framework',
+    'django_filters',
     'allauth',  # new
     'allauth.account',  # new
     'allauth.socialaccount',  # new
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
 
     # our apps
     'core',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -150,3 +153,9 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = 'home'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",)
+
+
+}
