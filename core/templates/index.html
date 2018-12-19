@@ -1,23 +1,18 @@
 {% extends 'base.html' %}
 
 
+
+
+
 {% block title %}
 
+    {{ block.super }}
 
- This is the index template
+{% endblock title %}
 
 
-{% endblock title %} 
 
 {% block content %}
-This is the content block in the index template
+
 {% endblock content %}
 
-{% load socialaccount %}
-
-<h1>Snip>et</h1>
-{% if user.is_authenticated %}
-<p>Welcome {{ user.username }} !!!</p>
-{% else %}
-<a href="{% provider_login_url 'github' %}">Sign Up</a>
-{% endif %}

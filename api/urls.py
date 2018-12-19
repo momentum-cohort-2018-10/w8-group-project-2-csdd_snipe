@@ -10,5 +10,4 @@ urlpatterns = [
         api_views.SnippetRetrieveUpdateDestroyView.as_view(),
         name="api_snippet",
     ),
-    path("users/", api_views.UserListView.as_view(), name="api_user_list"),
 ]

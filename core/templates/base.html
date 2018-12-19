@@ -8,34 +8,44 @@
   <title>CodeSnippets</title>
  
 </head>
+
+{% block header %}
+
+<nav>
+                    <a href="{% url 'home' %}">Home</a>
+                    {% if user.is_authenticated %}
+                   
+                        <a href="{% url 'auth_logout' %}">Logout</a>
+                    
+                    {% else %}
+                  
+                        <a href="{% url 'auth_login' %}">Login</a>
+                   
+                   
+                        <a href="{% url 'registration_register' %}">Register</a>
+                    
+                    {% endif %}
+                </nav>
+
+ {% endblock header %}
+
+
+
 {% block title %}
 
 <h1>Snip>pet</h1>
 
 {% endblock title %}
 
- {% block header %}
- {% endblock header %}
+ 
 
-{% block content %}{% endblock content %}
-
-
-{% load socialaccount %}
-
-
-{% if user.is_authenticated %}
-<p>Welcome {{ user.username }} !!!</p>
-{% else %}
-<a href="{% provider_login_url 'github' %}">Sign Up</a>
-{% endif %} 
+{% block content %}
 
 
 
 
 
 
-
-{% endblock header %}
 
 <body>
 
@@ -43,9 +53,9 @@
 
 
 </body> 
+{% endblock content %}
 
 
 
 
-
-</html> {% endcomment %}
+</html> 
