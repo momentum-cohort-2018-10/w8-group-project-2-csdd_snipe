@@ -10,9 +10,11 @@ django-extensions = "*"
 django-debug-toolbar = "*"
 gunicorn = "*"
 django-heroku = "*"
-django-allauth = "*"
 djangorestframework = "*"
 pygments = "*"
+djangorestframework = "*"
+django-filter = "*"
+django-registration-redux = "*"
 
 [dev-packages]
 

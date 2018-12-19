@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',  # new
+    # 'django.contrib.sites',  # new
     # thirdparty apps
     'django_extensions',
     'debug_toolbar',
@@ -49,8 +49,12 @@ INSTALLED_APPS = [
     # 'allauth.socialaccount.providers.google',  # new
     # 'allauth.socialaccount.providers.facebook',  # new
     'rest_framework',
+    'django_filters',
+    'registration',
+
     # our apps
     'core',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +73,7 @@ ROOT_URLCONF = 'snippet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,14 +143,22 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'core.User'
 
 
-# for django-allauth
-AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
-
-SITE_ID = 1
-
 LOGIN_REDIRECT_URL = 'home'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",)
+
+
+}
+
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'testing@example.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+EMAIL_PORT = 1025
