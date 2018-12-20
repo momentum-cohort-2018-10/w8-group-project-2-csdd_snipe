@@ -4,7 +4,7 @@ function snippetHtml(snippet) {
     <h2 class="title">${ snippet.title}</h2>
     <h3 class="username">${ snippet.author}</h3>
     <h4 class="language">${ snippet.language}</h4>
-    <p><pre><code class="${snippet.language}">${snippet.content}</code></pre></p>
+    <p><pre><code class="${snippet.language}" class="card-text">${snippet.content}</code></pre></p>
     </div>
     `
 }
