@@ -1,7 +1,8 @@
 from django.core.management.base import BaseCommand
-from mimesis import Person, Text, Internet
+from mimesis import Person, Text
 from core.models import Snippet, User
 from random import choice
+from snippet.settings import BASE_DIR
 
 
 class Command(BaseCommand):
@@ -21,10 +22,21 @@ class Command(BaseCommand):
             ), first_name=person.name(), last_name=person.last_name(), email=person.email())
 
         text = Text()
-        internet = Internet()
         users = User.objects.all()
+
         for _ in range(30):
-            title = text.title()
+            language = choice(['python', 'javascript', 'ruby', 'java'])
+
+            if language == "java":
+                content = open(BASE_DIR + "/core/fakecode/file.java").read()
+            elif language == "python":
+                content = open(BASE_DIR + "/core/fakecode/python.py").read()
+            elif language == "javascript":
+                content = open(
+                    BASE_DIR + "/core/fakecode/javascript.js").read()
+            else:
+                content = open(BASE_DIR + "/core/fakecode/ruby.rb").read()
+            title = text.sentence()
             if not Snippet.objects.filter(title=title).exists():
                 Snippet.objects.create(author=choice(
-                    users), content=text.text(), title=text.sentence, url=internet.home_page(), )
+                    users), title=title, language=language, content=content)

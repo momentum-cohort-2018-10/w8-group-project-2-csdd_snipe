@@ -11,8 +11,12 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 class SnippetListCreateView(generics.ListCreateAPIView):
     serializer_class = SnippetSerializer
-    snippets = Snippet.objects.all()
+    queryset = Snippet.objects.all()
     filter_backends = (DjangoFilterBackend,)
+
+
+class MySnippetListCreateView(generics.ListCreateAPIView):
+    serializer_class = SnippetSerializer
 
     def get_queryset(self):
         return self.request.user.snippets
@@ -24,6 +28,7 @@ class SnippetListCreateView(generics.ListCreateAPIView):
 class SnippetRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = SnippetSerializer
     lookup_field = "pk"
+    # queryset = Snippet.objects.all()
 
     def get_queryset(self):
         return self.request.user.snippets
