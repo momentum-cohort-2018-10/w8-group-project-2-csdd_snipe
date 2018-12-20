@@ -15,6 +15,7 @@ django-filter = "*"
 django-registration-redux = "*"
 mimesis = "*"
 werkzeug = "*"
+"django-gravatar2" = "*"
 
 [dev-packages]
 

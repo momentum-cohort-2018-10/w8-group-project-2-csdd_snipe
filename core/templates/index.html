@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-
+{% load gravatar %}
 
 <link rel="stylesheet" href="/path/to/styles/default.css">
 <script src="/path/to/highlight.pack.js"></script>
@@ -24,13 +24,15 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                
+
                 {% for snippet in snippets %}
                 <div class="card-body">
-                <h2 class="title">{{ snippet.title }}</h2>
-    <h3 class="username">{{ snippet.author }}</h3>
-    <h4 class="language">{{ snippet.language }}</h4>
-    <p><pre><code class={{ snippet.language }}>{{ snippet.content }}</code></pre></p>
+                <h3 class="title">{{ snippet.title| truncatewords:8 }}</h3>
+    <image src ="{% gravatar_url snippet.author.email 150%}" height="50" width="50"/></h4>  {{ snippet.author }}</h4>
+    <p class="username">Written by:{{ snippet.author }}</p>
+    <h4 class="language">Language: {{ snippet.language }}</h4>
+    <p><pre><code class={{ snippet.language }} class="card-text">{{ snippet.content }}</code></pre></p>
     </div>
                 {% endfor %}
                   
