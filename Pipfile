@@ -13,6 +13,8 @@ django-heroku = "*"
 djangorestframework = "*"
 django-filter = "*"
 django-registration-redux = "*"
+mimesis = "*"
+werkzeug = "*"
 
 [dev-packages]
 
