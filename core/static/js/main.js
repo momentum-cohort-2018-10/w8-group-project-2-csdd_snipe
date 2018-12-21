@@ -10,15 +10,6 @@ function snippetHtml(snippet) {
     `
 }
 
-
-// $.get('/api/snippets/').then(function (snippets) {
-
-//     for (let snippet of snippets) {
-//         $('#snippet-list').append(snippetHtml(snippet))
-//     }
-
-// })
-
 $("#search-button").on("click", function (event) {
 
     $.get('/api/snippets/', { search: $("#query").val() }).then(function (snippets) {
@@ -30,3 +21,14 @@ $("#search-button").on("click", function (event) {
         }
     })
 })
+// var clipboard = new ClipboardJS('.btn'); 
+// clipboard.on('success', function(e) { 
+//     console.info('Action:', e.action); 
+//     console.info('Text:', e.text); 
+//     console.info('Trigger:', e.trigger); e.clearSelection(); }); 
+//     clipboard.on('error', function(e) { 
+//         console.error('Action:', e.action); 
+//     console.error('Trigger:', e.trigger); 
+// });
+
+let clipboard = new ClipboardJS('.copy-button');
