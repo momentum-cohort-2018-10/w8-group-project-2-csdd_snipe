@@ -29,12 +29,22 @@
               <div id="search-results" class="card mb-4 shadow-sm">
                 <div class="card-body">
                 <h3 class="title">{{ snippet.title| truncatewords:8 }}</h3>
-                  <img src="{{ snippet.author|gravatar:50 }}" />
+   <img src="{{ snippet.author|gravatar:50 }}" />
+    <p class="username">Author: {{ snippet.author }}</p>
+
+    <h4 class="language">Language: {{ snippet.language }}</h4>
+    <p><pre><code class={{ snippet.language }} class="card-text" id="snippet-content-{{snippet.id}}">{{ snippet.content }}</code></pre></p>
+<button  class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta"  data-clipboard-target="#snippet-content-{{snippet.id}}"> Snip a Copy</button>
+    </div>
+                {% endfor %}
+                  
+<!--                   <img src="{{ snippet.author|gravatar:50 }}" />
                   <p class="username">Author: {{ snippet.author }}</p>
                   <h4 class="language">Language: {{ snippet.language }}</h4>
                    <p><pre><code class={{ snippet.language }} class="card-text">{{ snippet.content }}</code></pre></p>
                   <button i class="fa fa-copy" style="font-size:17px;color:darkmagenta" id="copy-button" data-clipboard-target="#post-shortlink"> Snip a Copy</button>
-                  </div>                  
+                  </div>                   -->
+
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -60,20 +70,9 @@
         <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
       </div>
     </footer>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
-</html>
- 
-
- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" defer></script>
 
 
 

@@ -25,12 +25,13 @@ class SnippetListView(generics.ListAPIView):
 
 class MySnippetListCreateView(generics.ListCreateAPIView):
     serializer_class = SnippetSerializer
-
     def get_queryset(self):
         return self.request.user.snippets
 
     def perform_create(self, serializer):
+        print(request)
         serializer.save(author=self.request.user)
+        print(serializer)
 
 
 class SnippetRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):

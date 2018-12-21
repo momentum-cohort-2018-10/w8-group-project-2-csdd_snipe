@@ -10,15 +10,6 @@ function snippetHtml(snippet) {
     `
 }
 
-
-// $.get('/api/snippets/').then(function (snippets) {
-
-//     for (let snippet of snippets) {
-//         $('#snippet-list').append(snippetHtml(snippet))
-//     }
-
-// })
-
 $("#search-button").on("click", function (event) {
 
     $.get('/api/snippets/', { search: $("#query").val() }).then(function (snippets) {
@@ -30,3 +21,50 @@ $("#search-button").on("click", function (event) {
         }
     })
 })
+// var clipboard = new ClipboardJS('.btn'); 
+// clipboard.on('success', function(e) { 
+//     console.info('Action:', e.action); 
+//     console.info('Text:', e.text); 
+//     console.info('Trigger:', e.trigger); e.clearSelection(); }); 
+//     clipboard.on('error', function(e) { 
+//         console.error('Action:', e.action); 
+//     console.error('Trigger:', e.trigger); 
+// });
+
+// let clipboard = new ClipboardJS('.copy-button');
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+let clipboard = new ClipboardJS('.copy-button');
+console.log(clipboard)
+
+$(".copy-button").on("click", function (clipboard){
+   console.log("hi") 
+    $.ajax({
+        type: "POST",
+        url: "/api/my_snippets/",
+        dataType: "json",
+        data: {
+            content: clipboard,
+            language: '${snippet.language}',
+            title: '${snippet.title}',
+            csrfmiddlewaretoken: csrftoken
+        }
+    })
+})
+// $('api/my_snippets').append $(clipboard);
