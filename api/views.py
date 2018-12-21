@@ -9,15 +9,13 @@ from rest_framework.exceptions import PermissionDenied
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 
 
-class SnippetListCreateView(generics.ListCreateAPIView):
+class SnippetListView(generics.ListAPIView):
     serializer_class = SnippetSerializer
     filter_backends = (DjangoFilterBackend,)
 
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
-
     def get_queryset(self):
-        vector = SearchVector('language', 'content', 'title')
+        vector = SearchVector('language', 'content',
+                              'title', 'author__username')
         if self.request.GET.get("search"):
             query = self.request.GET.get("search")
             return Snippet.objects.annotate(search=vector).filter(search=query)
@@ -31,6 +29,9 @@ class MySnippetListCreateView(generics.ListCreateAPIView):
     def get_queryset(self):
         return self.request.user.snippets
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
 
 class SnippetRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = SnippetSerializer
@@ -40,7 +41,6 @@ class SnippetRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     def check_object_permissions(self, request, snippet):
         if request.method != "GET" and snippet.author != request.user:
             raise PermissionDenied("You are not allowed to that! Sorry!")
-
         return super().check_object_permissions(request, snippet)
 
 
