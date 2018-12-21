@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "525bebc978e769095b670ea13717a0dc0799df8afb15e5948b9704075f4f5e45"
+            "sha256": "9420bdebeb6e5368e9f12e8752f776e8226f6db6132fdfd53e29c852351f9784"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -55,6 +55,14 @@
             "index": "pypi",
             "version": "==2.0.0"
         },
+        "django-gravatar2": {
+            "hashes": [
+                "sha256:46cd5cecf46d7c6155aa31badb2575f634fc6fe65ad73c2b711a2fee3b205be3",
+                "sha256:d6ec4ae679a8f4e4ea349259543fb1998e3415e08c3acd2b3648dd7466357204"
+            ],
+            "index": "pypi",
+            "version": "==1.4.2"
+        },
         "django-heroku": {
             "hashes": [
                 "sha256:2bc690aab89eedbe01311752320a9a12e7548e3b0ed102681acc5736a41a4762",
@@ -93,6 +101,13 @@
             ],
             "index": "pypi",
             "version": "==3.0.0"
+        },
+        "nemesis": {
+            "hashes": [
+                "sha256:13d052a83d15c0dcc7ecd3e572728e10a30753a71b67e69a744641fde4253948"
+            ],
+            "index": "pypi",
+            "version": "==0.0.0"
         },
         "psycopg2": {
             "hashes": [

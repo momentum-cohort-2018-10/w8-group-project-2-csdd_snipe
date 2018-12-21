@@ -1,13 +1,13 @@
-// function snippetHtml(snippet) {
-//     return `   
-//     <div class="snippet-div">
-//     <h2 class="title">${ snippet.title}</h2>
-//     <h3 class="username">${ snippet.author}</h3>
-//     <h4 class="language">${ snippet.language}</h4>
-//     <p><pre><code class="${snippet.language}" class="card-text">${snippet.content}</code></pre></p>
-//     </div>
-//     `
-// }
+function snippetHtml(snippet) {
+    return `   
+    <div class="card-body">
+    <h3 class="title">${snippet.title}</h3>
+<p class="username">Author: ${ snippet.author}</p>
+<h4 class="language">Language: ${snippet.language}</h4>
+<p><pre><code class=${snippet.language} class="card-text">${snippet.content}</code></pre></p>
+</div>
+    `
+}
 
 
 // $.get('/api/snippets/').then(function (snippets) {
@@ -18,3 +18,14 @@
 
 // })
 
+$("#search-button").on("click", function (event) {
+
+    $.get('/api/snippets/', { search: $("#query").val() }).then(function (snippets) {
+        console.log(snippets);
+        $('#search-results').empty();
+        for (let snippet of snippets) {
+            $('#search-results').append(snippetHtml(snippet))
+
+        }
+    })
+})

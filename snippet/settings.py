@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_filters',
     'registration',
     'mimesis',
+    'django_gravatar',
 
     # our apps
     'core',

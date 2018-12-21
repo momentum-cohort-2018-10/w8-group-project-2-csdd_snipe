@@ -6,14 +6,23 @@ from rest_framework.views import APIView
 from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.exceptions import PermissionDenied
-
-# Create your views here.
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 
 
 class SnippetListCreateView(generics.ListCreateAPIView):
     serializer_class = SnippetSerializer
-    queryset = Snippet.objects.all()
     filter_backends = (DjangoFilterBackend,)
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+    def get_queryset(self):
+        vector = SearchVector('language', 'content', 'title')
+        if self.request.GET.get("search"):
+            query = self.request.GET.get("search")
+            return Snippet.objects.annotate(search=vector).filter(search=query)
+        else:
+            return Snippet.objects.all()
 
 
 class MySnippetListCreateView(generics.ListCreateAPIView):
@@ -21,9 +30,6 @@ class MySnippetListCreateView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         return self.request.user.snippets
-
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
 
 
 class SnippetRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
