@@ -19,34 +19,35 @@
 
 
 {% block content %}
-
       <div class="album py-5 bg-light">
         <div class="container">
+
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-12"> 
+            {% for snippet in snippets %}
+
               <div id="search-results" class="card mb-4 shadow-sm">
-                
-               
-                {% for snippet in snippets %}
                 <div class="card-body">
                 <h3 class="title">{{ snippet.title| truncatewords:8 }}</h3>
-   <img src="{{ snippet.author|gravatar:50 }}" />
-    <p class="username">Author: {{ snippet.author }}</p>
-
-    <h4 class="language">Language: {{ snippet.language }}</h4>
-    <p><pre><code class={{ snippet.language }} class="card-text">{{ snippet.content }}</code></pre></p>
-    </div>
-                {% endfor %}
-                  
+                  <img src="{{ snippet.author|gravatar:50 }}" />
+                  <p class="username">Author: {{ snippet.author }}</p>
+                  <h4 class="language">Language: {{ snippet.language }}</h4>
+                   <p><pre><code class={{ snippet.language }} class="card-text">{{ snippet.content }}</code></pre></p>
+                  <button i class="fa fa-copy" style="font-size:17px;color:darkmagenta" id="copy-button" data-clipboard-target="#post-shortlink"> Snip a Copy</button>
+                  </div>                  
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                     </div>
-                    <small class="text-muted">9 mins</small>
+                    <small class="text-muted"></small>
                   </div>
+
                 </div>
+                {% endfor %}
+
               </div>
+
             </div>
           </div>
     </main>
