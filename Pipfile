@@ -19,6 +19,7 @@ nemesis = "*"
 "django-gravatar2" = "*"
 
 [dev-packages]
+mimesis = "*"
 
 [requires]
 python_version = "3.7"
