@@ -23,14 +23,14 @@
         <div class="container">
           <div class="row">
             <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
+              <div id="search-results" class="card mb-4 shadow-sm">
                 
 
                 {% for snippet in snippets %}
                 <div class="card-body">
                 <h3 class="title">{{ snippet.title| truncatewords:8 }}</h3>
-    <image src ="{% gravatar_url snippet.author.email 150%}" height="50" width="50"/></h4>  {{ snippet.author }}</h4>
-    <p class="username">Written by:{{ snippet.author }}</p>
+    <image src ="{% gravatar_url snippet.author.email 150%}" height="50" width="50"/>
+    <p class="username">Author: {{ snippet.author }}</p>
     <h4 class="language">Language: {{ snippet.language }}</h4>
     <p><pre><code class={{ snippet.language }} class="card-text">{{ snippet.content }}</code></pre></p>
     </div>
