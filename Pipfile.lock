@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "564043638dc3772efeac545065602f9cac38788d20e0eab2d7462dae0e1ae934"
+            "sha256": "16ac90be7e2b87f209025311b805b12f24c2841852fe399687fb82d8b8c9d064"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -54,6 +54,14 @@
             ],
             "index": "pypi",
             "version": "==2.0.0"
+        },
+        "django-gravatar2": {
+            "hashes": [
+                "sha256:46cd5cecf46d7c6155aa31badb2575f634fc6fe65ad73c2b711a2fee3b205be3",
+                "sha256:d6ec4ae679a8f4e4ea349259543fb1998e3415e08c3acd2b3648dd7466357204"
+            ],
+            "index": "pypi",
+            "version": "==1.4.2"
         },
         "django-heroku": {
             "hashes": [

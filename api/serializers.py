@@ -2,6 +2,16 @@ from rest_framework import serializers
 from core.models import Snippet, User
 
 
+class CreatableSlugRelatedField(serializers.SlugRelatedField):
+    def to_internal_value(self, data):
+        try:
+            value, _ = self.get_queryset().get_or_create(
+                **{self.slug_field: data})
+            return value
+        except (TypeError, ValueError):
+            self.fail("invalid")
+
+
 class SnippetSerializer(serializers.ModelSerializer):
     author = serializers.SlugRelatedField(
         slug_field="username", read_only=True)
@@ -19,4 +29,4 @@ class SnippetSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ("username",)
+        fields = ("username", "email")

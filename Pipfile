@@ -16,6 +16,7 @@ django-registration-redux = "*"
 mimesis = "*"
 werkzeug = "*"
 nemesis = "*"
+"django-gravatar2" = "*"
 
 [dev-packages]
 
