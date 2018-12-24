@@ -31,24 +31,8 @@ $("#search-button").on("click", function (event) {
 })
 
 
-
-
-
-
-// var clipboard = new ClipboardJS('.btn'); 
-// clipboard.on('success', function(e) { 
-//     console.info('Action:', e.action); 
-//     console.info('Text:', e.text); 
-//     console.info('Trigger:', e.trigger); e.clearSelection(); }); 
-//     clipboard.on('error', function(e) { 
-//         console.error('Action:', e.action); 
-//     console.error('Trigger:', e.trigger); 
-// });
-
-// let clipboard = new ClipboardJS('.copy-button');
-
 function getCookie(name) {
-    var cookieValue = null;
+    let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
         var cookies = document.cookie.split(';');
         for (var i = 0; i < cookies.length; i++) {
@@ -62,13 +46,15 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
 let csrftoken = getCookie('csrftoken');
 let clipboard = new ClipboardJS('.copy-button');
+
+
 
 clipboard.on("success", function (e) {
     let snippet = $(e.trigger).data();
     snippet.content = e.text;
-
     $.ajax({
         type: "POST",
         url: "/api/my_snippets/",
@@ -77,21 +63,18 @@ clipboard.on("success", function (e) {
             content: `${snippet.content}`,
             language: `${snippet.language}`,
             title: `${snippet.title}`,
-            is_copy: true,
-            csrfmiddlewaretoken: csrftoken
-        }.then(function (success) {
-            console.log(success);
-            // }).get('/api/my_snippets/', {
-            //     function(copy_snippets) {
+            "is_copy": true,
+            csrfmiddlewaretoken: csrftoken,
+        }
+    }).then(function (success) {
+        console.log(success);
+    });
+});
 
-            //         for (let snippet of copy_snippets)
-            //             $("#mysnippets").append(snippetHtml(snippet));
-            //     }
-        }))
 
-    clipboard.on('error', function (e) {
-        console.error('Action:', e.action);
-        console.error('Trigger:', e.trigger);
-    })
+clipboard.on('error', function (e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+})
 
 
