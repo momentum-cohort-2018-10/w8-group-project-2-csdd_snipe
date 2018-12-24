@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% load app_tags %}
 {% load gravatar %}
 
 <link rel="stylesheet" href="/path/to/styles/default.css">
 <script src="/path/to/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
- 
+
 
 {% block title %}
 
@@ -25,7 +25,7 @@
           <div class="row">
             <div class="col-md-12"> 
             {% for snippet in snippets %}
-
+                
               <div id="search-results" class="card mb-4 shadow-sm">
                 <div class="card-body">
                 <h3 class="title">{{ snippet.title| truncatewords:8 }}</h3>
@@ -34,22 +34,25 @@
 
     <h4 class="language">Language: {{ snippet.language }}</h4>
     <p><pre><code class={{ snippet.language }} class="card-text" id="snippet-content-{{snippet.id}}">{{ snippet.content }}</code></pre></p>
-<button  class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta"  data-clipboard-target="#snippet-content-{{snippet.id}}"> Snip a Copy</button>
-    </div>
-                {% endfor %}
-                  
-
-
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted"></small>
-                  </div>
-
-                </div>
                
+    </div>
+    <div>
+     
+            <button  class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta" data-language="{{snippet.language}}" data-id="{{snippet.id}}" data-title="{{snippet.title}}" data-author="{{snippet.author}}" data-clipboard-target="#snippet-content-{{snippet.id}}"> Snip a Copy</button>      
+            <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            </div>
+            <small class="text-muted"></small>
+
+           
+            </div>
+           
+        
+        </div>
+    </div>
+    {% endfor %}
 
               </div>
 

@@ -6,7 +6,7 @@ urlpatterns = [
     path("snippets/", api_views.SnippetListView.as_view(),
          name="api_snippets_list"),
     path("my_snippets/", api_views.MySnippetListCreateView.as_view(),
-         name="my_api_snippets_list"),
+         name="my_snippets_list"),
     path(
         "snippets/<pk>/",
         api_views.SnippetRetrieveUpdateDestroyView.as_view(),
