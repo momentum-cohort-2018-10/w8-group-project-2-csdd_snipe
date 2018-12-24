@@ -3,9 +3,17 @@ function snippetHtml(snippet) {
     <div class="card-body">
     <h3 class="title">${snippet.title}</h3>
     <img src="https://secure.gravatar.com/avatar/${md5(snippet.author_email)}.jpg?s=150&d=mm&r=g">
-<p class="username">Author: ${snippet.author}</p>
-<h4 class="language">Language: ${snippet.language}</h4>
-<p><pre><code class=${snippet.language} class="card-text">${snippet.content}</code></pre></p>
+    <p class="username">Author: ${snippet.author}</p>
+    <h4 class="language">Language: ${snippet.language}</h4>
+    <p><pre><code class=${snippet.language} class="card-text">${snippet.content}</code></pre></p>
+    <button  class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta" data-language=${snippet.language} data-id=${snippet.id} data-title=${snippet.title} data-author= ${snippet.author}" data-clipboard-target="#snippet-content-${snippet.id}> Snip a Copy</button>      
+    <div class="d-flex justify-content-between align-items-center">
+    <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+    </div>
+    <small class="text-muted"></small>
+
 </div>
     `
 }
@@ -21,20 +29,10 @@ $("#search-button").on("click", function (event) {
         }
     })
 })
-// var clipboard = new ClipboardJS('.btn'); 
-// clipboard.on('success', function(e) { 
-//     console.info('Action:', e.action); 
-//     console.info('Text:', e.text); 
-//     console.info('Trigger:', e.trigger); e.clearSelection(); }); 
-//     clipboard.on('error', function(e) { 
-//         console.error('Action:', e.action); 
-//     console.error('Trigger:', e.trigger); 
-// });
 
-// let clipboard = new ClipboardJS('.copy-button');
 
 function getCookie(name) {
-    var cookieValue = null;
+    let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
         var cookies = document.cookie.split(';');
         for (var i = 0; i < cookies.length; i++) {
@@ -48,23 +46,35 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-var csrftoken = getCookie('csrftoken');
 
+let csrftoken = getCookie('csrftoken');
 let clipboard = new ClipboardJS('.copy-button');
-console.log(clipboard)
 
-$(".copy-button").on("click", function (clipboard){
-   console.log("hi") 
+
+
+clipboard.on("success", function (e) {
+    let snippet = $(e.trigger).data();
+    snippet.content = e.text;
     $.ajax({
         type: "POST",
         url: "/api/my_snippets/",
         dataType: "json",
         data: {
-            content: clipboard,
-            language: '${snippet.language}',
-            title: '${snippet.title}',
-            csrfmiddlewaretoken: csrftoken
+            content: `${snippet.content}`,
+            language: `${snippet.language}`,
+            title: `${snippet.title}`,
+            "is_copy": true,
+            csrfmiddlewaretoken: csrftoken,
         }
-    })
+    }).then(function (success) {
+        console.log(success);
+    });
+});
+
+
+clipboard.on('error', function (e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
 })
-// $('api/my_snippets').append $(clipboard);
+
+
