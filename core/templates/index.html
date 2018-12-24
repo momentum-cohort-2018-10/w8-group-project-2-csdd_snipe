@@ -25,13 +25,13 @@
               <img src="{{ snippet.author|gravatar:50 }}" />
               <p class="username">Author: {{ snippet.author }}</p>
               <h4 class="language">Language: {{ snippet.language }}</h4>
-                <p><pre><code class={{ snippet.language }} class="card-text" id="snippet-content-{{snippet.id}}">{{ snippet.content| truncatewords:10 }}</code></pre></p>
+                <p><pre><code class={{ snippet.language }} class="card-text" id="snippet-content-{{snippet.id}}">{{ snippet.content }}</code></pre></p>
             </div>
           <div> 
-            <button  class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta" 
+            {% comment %} <button  class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta" 
               data-language="{{snippet.language}}" data-id="{{snippet.id}}" data-title="{{snippet.title}}" 
               data-author="{{snippet.author}}" data-clipboard-target="#snippet-content-{{snippet.id}}"> 
-              Snip a Copy</button>      
+              Snip a Copy</button>       {% endcomment %}
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                   <button id="modalBtn" class="button">View</button> 
@@ -39,16 +39,17 @@
                     <div class="modal-content">
                     <div class="modal-header">
                       <sapn class="closeBtn">&times;</sapn>
-                      <h2>Snips Header Content</h2>
+                      <h2>{{ snippet.title }}</h2>
                     </div>
                     <div class="modal-body">
-                      <b> Snips Body </b>
-                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae ducimus culpa assumenda 
-                      nulla rerum nobis aperiam temporibus expedita corrupti modi, 
-                      nemo veritatis in vero dolore sint quibusdam suscipit minima laudantium.</p>
+                      <b> {{ snippet.language }} </b>
+                      <p>{{ snippet.content }}</p>
                     </div>
                     <div class="modal-footer">
-                      <h3> try to put snips button here </h3>
+                       <button  class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta" 
+                        data-language="{{snippet.language}}" data-id="{{snippet.id}}" data-title="{{snippet.title}}" 
+                        data-author="{{snippet.author}}" data-clipboard-target="#snippet-content-{{snippet.id}}"> 
+                        Snip a Copy</button> 
                     </div>
                   </div>
                 </div>

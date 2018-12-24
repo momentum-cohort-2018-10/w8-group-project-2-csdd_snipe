@@ -77,6 +77,11 @@ clipboard.on('error', function (e) {
     console.error('Trigger:', e.trigger);
 })
 
+//gets all the ids 
+function qs (selector) {
+    return document.querySelectorAll(selector)
+}
+
 //Get the modal element
 let modal = document.getElementById('simpleModal');
 
@@ -94,6 +99,7 @@ closeBtn.addEventListener('click', closeModal);
 
 //listen for outside click
 window.addEventListener('click', outsideClick);
+
 
 //Function to open modal
 function openModal(){
