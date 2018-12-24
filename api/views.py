@@ -20,7 +20,7 @@ class SnippetListView(generics.ListAPIView):
             query = self.request.GET.get("search")
             return Snippet.objects.annotate(search=vector).filter(search=query)
         else:
-            return Snippet.objects.filter(is_copy="True")
+            return Snippet.objects.filter(is_copy=True)
 
 
 class MySnippetListCreateView(generics.ListCreateAPIView):

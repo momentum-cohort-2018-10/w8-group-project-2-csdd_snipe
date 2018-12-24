@@ -21,8 +21,8 @@ class SnippetSerializer(serializers.ModelSerializer):
         max_length=None, min_length=None, allow_blank=False, trim_whitespace=True)
     language = serializers.CharField(max_length=40, allow_blank=False)
     title = serializers.CharField(allow_blank=True)
-    is_copy = serializers.BooleanField(default="False")
-    queryset = Snippet.objects.filter(is_copy="True")
+    is_copy = serializers.BooleanField(default=False)
+    queryset = Snippet.objects.filter(is_copy=True)
 
     class Meta:
         model = Snippet

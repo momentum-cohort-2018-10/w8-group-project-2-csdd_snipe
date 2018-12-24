@@ -29,6 +29,12 @@ $("#search-button").on("click", function (event) {
         }
     })
 })
+
+
+
+
+
+
 // var clipboard = new ClipboardJS('.btn'); 
 // clipboard.on('success', function(e) { 
 //     console.info('Action:', e.action); 
@@ -62,7 +68,7 @@ let clipboard = new ClipboardJS('.copy-button');
 clipboard.on("success", function (e) {
     let snippet = $(e.trigger).data();
     snippet.content = e.text;
-    
+
     $.ajax({
         type: "POST",
         url: "/api/my_snippets/",
@@ -71,17 +77,21 @@ clipboard.on("success", function (e) {
             content: `${snippet.content}`,
             language: `${snippet.language}`,
             title: `${snippet.title}`,
+            is_copy: true,
             csrfmiddlewaretoken: csrftoken
-        }
-    }).then(function (success) {
-        console.log(success);
-    })
-    // .get('/api/my_snippets/'.append(snippetHtml(snippet)))
-});
+        }.then(function (success) {
+            console.log(success);
+            // }).get('/api/my_snippets/', {
+            //     function(copy_snippets) {
 
-clipboard.on('error', function (e) {
-    console.error('Action:', e.action);
-    console.error('Trigger:', e.trigger);
-});
+            //         for (let snippet of copy_snippets)
+            //             $("#mysnippets").append(snippetHtml(snippet));
+            //     }
+        }))
+
+    clipboard.on('error', function (e) {
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+    })
 
 
