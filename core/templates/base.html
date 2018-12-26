@@ -18,22 +18,25 @@
 </head>   
 {% block header %}
 <header>
-    <div class="collapse bg-dark" id="navbarHeader">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-md-7 py-4">
-          </div>
-          <div class="col-sm-4 offset-md-1 py-4">
-            <ul class="list-unstyled">
-            {% if user.is_authenticated %}
-            <li><a href="{% url "my_snippets_list" %}" class="text-white">Add new snippet</a></li>
-              <li><a href="{% url "my_snippets_list" %}" class="text-white">My Page</a></li>
-            <li><a href="{% url 'auth_logout' %}" class="text-white">Log Out</a></li>
-            {% else %}
-              <li><a href="{% url 'registration_register' %}" class="text-white">Register</a></li>
-              <li><a href="{% url 'auth_login' %}" class="text-white">Log In</a></li>
-            {% endif %}
-            </ul>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <ul class="list-unstyled">
+              <li><a href="{% url "home" %}" class="text-white">Home</a></li>
+              {% if user.is_authenticated %}
+              <li><a href="{% url "my_snippets_list" %}" class="text-white">Add new snippet</a></li>
+                <li><a href="{% url "my_snippets_list" %}" class="text-white">My Page</a></li>
+              <li><a href="{% url 'auth_logout' %}" class="text-white">Log Out</a></li>
+              {% else %}
+                <li><a href="{% url 'registration_register' %}" class="text-white">Register</a></li>
+                <li><a href="{% url 'auth_login' %}" class="text-white">Log In</a></li>
+                
+                {% endif %}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
