@@ -21,5 +21,7 @@ class Snippet(models.Model):
 
     language = models.CharField(max_length=100)
 
+    is_copy = models.BooleanField(default=False)
+
     class Meta:
         ordering = ('created_at',)

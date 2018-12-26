@@ -20,18 +20,18 @@ class SnippetListView(generics.ListAPIView):
             query = self.request.GET.get("search")
             return Snippet.objects.annotate(search=vector).filter(search=query)
         else:
-            return Snippet.objects.all()
+            return Snippet.objects.filter(is_copy=True)
 
 
 class MySnippetListCreateView(generics.ListCreateAPIView):
     serializer_class = SnippetSerializer
+
     def get_queryset(self):
         return self.request.user.snippets
 
     def perform_create(self, serializer):
-        print(request)
+        print(self.request)
         serializer.save(author=self.request.user)
-        print(serializer)
 
 
 class SnippetRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):

@@ -1,0 +1,14 @@
+{% comment %} {% extends 'base.html '%}
+{% load staticfiles %}
+
+<script src="{% static 'js/mine.js' %}" defer></script>
+
+{% block title %}
+<h3>{{ % User.username %}} page</h3>
+{% endblock title %}
+
+{% block content %}
+<div id="mysnippets">
+
+</div>
+{% endblock content %} {% endcomment %}
