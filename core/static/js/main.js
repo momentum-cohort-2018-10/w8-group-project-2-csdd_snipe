@@ -49,7 +49,8 @@ function getCookie(name) {
 
 let csrftoken = getCookie('csrftoken');
 let clipboard = new ClipboardJS('.copy-button');
-
+console.log("hi")
+console.log(csrftoken)
 
 
 clipboard.on("success", function (e) {
@@ -78,7 +79,7 @@ clipboard.on('error', function (e) {
 })
 
 //gets all the ids 
-function qs (selector) {
+function qs(selector) {
     return document.querySelectorAll(selector)
 }
 
@@ -102,19 +103,55 @@ window.addEventListener('click', outsideClick);
 
 
 //Function to open modal
-function openModal(){
+function openModal() {
     console.log(123);
     modal.style.display = 'block';
 }
 
 //Function to close modal
-function closeModal(){
+function closeModal() {
     modal.style.display = 'none';
 }
 
 //Functio to close modal if outside click
-function outsideClick(e){
-    if(e.target == modal){
+function outsideClick(e) {
+    if (e.target == modal) {
         modal.style.display = 'none';
     }
 }
+
+function setupNewSnippetModal() {
+    $("#add-snippet-button").on('click', function () {
+        $("#add-snippet-modal").addClass('is-active')
+    })
+    $(".modal-background, .modal-close, #cancel-button").on('click', function (event) {
+        event.preventDefault()
+        $("#add-snippet-modal").removeClass('is-active')
+
+    })
+    $('#new-snippet-form').on('submit', function (event) {
+        event.preventDefault()
+        console.log("hi")
+        let snippet = {
+            title: $('#new-snippet-title').val(),
+            language: $('new-snippet-language').val(),
+            content: $('new-snippet-content').val(),
+        }
+        $.ajax({
+            url: '/api/my_snippets',
+            method: 'GET',
+
+            // data: JSON.stringify(snippet),
+            // contentType: 'application/json',
+            // "is_copy": false,
+            csrfmiddlewaretoken: csrftoken,
+
+        }).then(function (snippet) {
+            $("#my-snippets").append(snippetHtml(snippet))
+            $("#add-snippet-modal").removeClass('is-active')
+
+
+        })
+    })
+}
+setupNewSnippetModal()
