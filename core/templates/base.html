@@ -29,6 +29,7 @@
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
               <ul class="list-unstyled">
+              <li><a href="{% url "home" %}" class="text-white">Home</a></li>
               {% if user.is_authenticated %}
               <li><a href="{% url "my_snippets_list" %}" class="text-white">Add new snippet</a></li>
                 <li><a href="{% url "my_snippets_list" %}" class="text-white">My Page</a></li>
