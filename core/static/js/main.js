@@ -77,4 +77,44 @@ clipboard.on('error', function (e) {
     console.error('Trigger:', e.trigger);
 })
 
+//gets all the ids 
+function qs (selector) {
+    return document.querySelectorAll(selector)
+}
 
+//Get the modal element
+let modal = document.getElementById('simpleModal');
+
+//Get open model button
+let modalBtn = document.getElementById('modalBtn');
+
+//Get close button
+let closeBtn = document.getElementsByClassName('closeBtn')[0];
+
+//listen for open click
+modalBtn.addEventListener('click', openModal);
+
+//listen for close click
+closeBtn.addEventListener('click', closeModal);
+
+//listen for outside click
+window.addEventListener('click', outsideClick);
+
+
+//Function to open modal
+function openModal(){
+    console.log(123);
+    modal.style.display = 'block';
+}
+
+//Function to close modal
+function closeModal(){
+    modal.style.display = 'none';
+}
+
+//Functio to close modal if outside click
+function outsideClick(e){
+    if(e.target == modal){
+        modal.style.display = 'none';
+    }
+}
