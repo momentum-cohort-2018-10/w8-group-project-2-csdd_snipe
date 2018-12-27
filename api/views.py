@@ -12,6 +12,7 @@ from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 class SnippetListCreateView(generics.ListCreateAPIView):
     serializer_class = SnippetSerializer
     filter_backends = (DjangoFilterBackend,)
+    queryset: Snippet.objects.all().order_by("-created_at")
 
     def get_queryset(self):
         vector = SearchVector('language', 'content',
