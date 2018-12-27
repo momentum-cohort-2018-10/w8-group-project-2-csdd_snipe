@@ -34,11 +34,11 @@
               Snip a Copy</button>       {% endcomment %}
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                  <button id="modalBtn" class="button" data-set="modal-{{snippet.id}}">View</button> 
-                  <div id="simpleModal" class="modal modal-{{snippet.id}}">
+                  <button id="modalBtn" class="button" data-type="modal-{{snippet.id}}">View</button> 
+                  <div id="modal-{{snippet.id}}" class="modal">
                     <div class="modal-content">
                     <div class="modal-header">
-                      <sapn class="closeBtn">&times;</sapn>
+                      <sapn data-type="modal-{{snippet.id}}" class="closeBtn">&times;</sapn>
                       <h2>{{ snippet.title }}</h2>
                     </div>
                     <div class="modal-body">

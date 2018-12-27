@@ -78,29 +78,35 @@ clipboard.on('error', function (e) {
 })
 
 
-let modals = document.querySelectorAll('.modal')
+
 let openBtns = document.querySelectorAll('.button')
-let closeBtn = document.querySelectorAll('.closeBtn')
+let closeBtns = document.querySelectorAll('.closeBtn')
 
 
+// opens modal when view is clicked
 openBtns.forEach(button => {
     button.addEventListener('click', event => {
-        console.log(event)
-        // modals.forEach(modal => {
-        //     modal.style.display = 'block'
-        // })
+        let modals = document.querySelectorAll('.modal')
+        modals.forEach(modal =>{
+            if (event.target.getAttribute("data-type") === modal.id) {
+                modal.style.display = 'block'
+            }
+        })
     })
 })
 
 
-//listen for open click
-// openBtn.addEventListener('click', openModal)
-
-// //listen for close click
-// closeBtn.addEventListener('click', closeModal);
-
-// //listen for outside click
-// window.addEventListener('click', outsideClick);
+//Functio to close modal if outside click
+closeBtns.forEach(button => {
+    button.addEventListener('click', event => {
+        let modals = document.querySelectorAll('.modal')
+        modals.forEach(modal => {
+            if (event.target.getAttribute("data-type") === modal.id) {
+                modal.style.display = 'none'
+            }
+        })
+    })
+})
 
 
 //Function to open modal
