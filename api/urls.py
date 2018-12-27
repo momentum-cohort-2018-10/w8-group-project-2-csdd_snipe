@@ -3,7 +3,7 @@ from api import views as api_views
 
 
 urlpatterns = [
-    path("snippets/", api_views.SnippetListView.as_view(),
+    path("snippets/", api_views.SnippetListCreateView.as_view(),
          name="api_snippets_list"),
     path("my_snippets/", api_views.MySnippetListCreateView.as_view(),
          name="my_snippets_list"),
