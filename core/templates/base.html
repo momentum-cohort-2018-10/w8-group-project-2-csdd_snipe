@@ -29,7 +29,7 @@
               {% if user.is_authenticated %}
               <li><a href="{% url "my_snippets_list" %}" class="text-white">Add new snippet</a></li>
                 <li><a href="{% url "my_snippets_list" %}" class="text-white">My Page</a></li>
-              <li><a href="{% url 'auth_logout' %}" class="text-white">Log Out</a></li>
+              <li><a href="{% url 'home' %}" class="text-white">Log Out</a></li>
               {% else %}
                 <li><a href="{% url 'registration_register' %}" class="text-white">Register</a></li>
                 <li><a href="{% url 'auth_login' %}" class="text-white">Log In</a></li>
