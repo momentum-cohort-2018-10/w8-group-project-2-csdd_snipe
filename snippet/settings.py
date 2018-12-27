@@ -64,7 +64,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
-ROOT_URLCONF = 'snippet.urls'
+ROOT_URLCONF ='core.urls'
 
 TEMPLATES = [
     {
@@ -139,7 +139,11 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'core.User'
 
 
+# redux redirect settings
 LOGIN_REDIRECT_URL = 'home'
+
+
+
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
