@@ -8,10 +8,3 @@ def index(request):
                                           })
 
 
-def snippet_detail(request, pk):
-
-    snippet = Book.objects.get(slug=slug)
-
-    return render(request, 'snips/snip_detail.html', {
-        'snippet': snippet,
-    })
