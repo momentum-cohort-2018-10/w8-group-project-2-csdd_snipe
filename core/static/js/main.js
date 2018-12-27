@@ -43,10 +43,9 @@ function profileHtml(snippet) {
 $.get("/api/my_snippets/").then(function (snippets){
 
     for (let snippet of snippets) {
-        $('#my-snips').append(profileHtml(snippet))
+        $('#user-snips').append(profileHtml(snippet))
 }})
 
-$("#search-button").on("click", function (event) {
 //search for snippets 
 function searchSnippets() {
     $("#search-button").on("click", function (event) {
