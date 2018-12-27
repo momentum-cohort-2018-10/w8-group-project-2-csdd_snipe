@@ -21,7 +21,7 @@
           {% for snippet in snippets %}  
             <div id="search-results" class="card mb-4 shadow-sm">
             <div class="card-body">
-              <h3 class="title">{{ snippet.title| truncatewords:8 }}</h3>
+              <h3 class="title"><a href="{% url 'snippet_detail' pk=snippet.pk %}">{{ snippet.title| truncatewords:8 }}</h3>
               <img src="{{ snippet.author|gravatar:50 }}" />
               <p class="username">Author: {{ snippet.author }}</p>
               <h4 class="language">Language: {{ snippet.language }}</h4>
