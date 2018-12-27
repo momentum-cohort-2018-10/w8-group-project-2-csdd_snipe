@@ -3,7 +3,7 @@ function snippetHtml(snippet) {
     <div class="card-body">
     <h3 class="title">${snippet.title}</h3>
     <img src="https://secure.gravatar.com/avatar/${md5(snippet.author_email)}.jpg?s=150&d=mm&r=g">
-    ${ snippet.author}
+    <p class="username">Author:${ snippet.author}</p>
         <h4 class="language">Language: ${snippet.language}</h4>
         <p><pre><code class=${snippet.language} class="card-text">${snippet.content}</code></pre></p>
         <button class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta" data-language=${snippet.language} data-id=${snippet.id} data-title=${snippet.title} data-author= ${snippet.author}" data-clipboard-target="#snippet - content - ${snippet.id}> Snip a Copy</button >
@@ -134,7 +134,7 @@ function setupNewSnippetModal() {
         let snippet = {
             title: $('#new-snippet-title').val(),
             language: $('.new-snippet-language').val(),
-            content:$('#new-snippet-content').val(),
+            content: $('#new-snippet-content').val(),
         }
         $.ajax({
             url: '/api/snippets/',
