@@ -3,7 +3,7 @@ function snippetHtml(snippet) {
     <div class="card-body">
     <h3 class="title">${snippet.title}</h3>
     <img src="https://secure.gravatar.com/avatar/${md5(snippet.author_email)}.jpg?s=150&d=mm&r=g">
-    < p class="username" > Author: ${ snippet.author}</p >
+    ${ snippet.author}
         <h4 class="language">Language: ${snippet.language}</h4>
         <p><pre><code class=${snippet.language} class="card-text">${snippet.content}</code></pre></p>
         <button class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta" data-language=${snippet.language} data-id=${snippet.id} data-title=${snippet.title} data-author= ${snippet.author}" data-clipboard-target="#snippet - content - ${snippet.id}> Snip a Copy</button >
@@ -124,28 +124,27 @@ function setupNewSnippetModal() {
     $("#add-snippet-button").on('click', function () {
         $("#add-snippet-modal").addClass('is-active')
     })
-    $(".modal-background, .modal-close, #cancel-button").on('click', function (event) {
+    $(".modal-background,.modal-close, #cancel-button").on('click', function (event) {
         event.preventDefault()
         $("#add-snippet-modal").removeClass('is-active')
-
     })
     $('#new-snippet-form').on('submit', function (event) {
         event.preventDefault()
         console.log("hi")
         let snippet = {
             title: $('#new-snippet-title').val(),
-            language: $('new-snippet-language').val(),
-            content: $('new-snippet-content').val(),
+            language: $('.new-snippet-language').val(),
+            content:$('#new-snippet-content').val(),
         }
         $.ajax({
-            url: '/api/my_snippets',
-            method: 'GET',
-
-            // data: JSON.stringify(snippet),
-            // contentType: 'application/json',
-            // "is_copy": false,
-            csrfmiddlewaretoken: csrftoken,
-
+            url: '/api/snippets/',
+            method: 'POST',
+            data: JSON.stringify(snippet),
+            contentType: 'application/json',
+            "is_copy": false,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken)
+            },
         }).then(function (snippet) {
             $("#my-snippets").append(snippetHtml(snippet))
             $("#add-snippet-modal").removeClass('is-active')
