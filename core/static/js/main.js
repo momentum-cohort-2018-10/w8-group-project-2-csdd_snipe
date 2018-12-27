@@ -80,38 +80,40 @@ clipboard.on('error', function (e) {
 
 // --Modal Window Controls-- //
 
-let openBtns = document.querySelectorAll('.button')
-let closeBtns = document.querySelectorAll('.closeBtn')
-
 
 // opens modal when 'view' is clicked
-openBtns.forEach(button => {
-    button.addEventListener('click', event => {
-        let modals = document.querySelectorAll('.modal')
-        modals.forEach(modal =>{
-            if (event.target.getAttribute("data-type") === modal.id) {
-                modal.style.display = 'block'
-            }
+function openModal() {
+    let openBtns = document.querySelectorAll('.button')
+    openBtns.forEach(button => {
+        button.addEventListener('click', event => {
+            let modals = document.querySelectorAll('.modal')
+            modals.forEach(modal =>{
+                if (event.target.getAttribute("data-type") === modal.id) {
+                    modal.style.display = 'block'
+                }
+            })
         })
     })
-})
+}
 
 
 // closes modal when 'x' is clicked
-closeBtns.forEach(button => {
-    button.addEventListener('click', event => {
-        let modals = document.querySelectorAll('.modal')
-        modals.forEach(modal => {
-            if (event.target.getAttribute("data-type") === modal.id) {
-                modal.style.display = 'none'
-            }
+function closeModal() {
+    let closeBtns = document.querySelectorAll('.closeBtn')
+    closeBtns.forEach(button => {
+        button.addEventListener('click', event => {
+            let modals = document.querySelectorAll('.modal')
+            modals.forEach(modal => {
+                if (event.target.getAttribute("data-type") === modal.id) {
+                    modal.style.display = 'none'
+                }
+            })
         })
     })
-})
-
-// temp
+}
 
 
+// clicking outside modal closes modal
 function outsideClick() {
     document.addEventListener('click', event => {
         let modals = document.querySelectorAll('.modal')
@@ -123,16 +125,7 @@ function outsideClick() {
     })
 }
 
+
+openModal()
+closeModal()
 outsideClick()
-
-// // closes modal if user clicks out side modal window
-// function outsideClick(e){
-//     document.addEventListener('click', event => {
-//         console.log(event)
-//         if (event.target.id === modal.id)
-//     })
-//     if(e.target == modal){
-
-//         modal.style.display = 'none'
-//     }
-// }
