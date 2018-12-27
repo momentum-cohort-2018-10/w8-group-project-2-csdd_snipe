@@ -18,6 +18,30 @@ function snippetHtml(snippet) {
 `
 }
 
+function profileHtml(snippet) {
+    return `   
+    <div class="card-body">
+    <h3 class="title">${snippet.title}</h3>
+    <p class="username">Author:${ snippet.author}</p>
+        <h4 class="language">Language: ${snippet.language}</h4>
+        <p><pre><code class=${snippet.language} class="card-text">${snippet.content}</code></pre></p>
+        <button class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta" data-language=${snippet.language} data-id=${snippet.id} data-title=${snippet.title} data-author= ${snippet.author}" data-clipboard-target="#snippet - content - ${snippet.id}> Snip a Copy</button >
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted"></small>
+
+            </div>
+`
+}
+$.get("/api/my_snippets/").then(function (snippets){
+
+    for (let snippet of snippets) {
+        $('#my-snips').append(profileHtml(snippet))
+}})
+
 $("#search-button").on("click", function (event) {
 
     $.get('/api/snippets/', { search: $("#query").val() }).then(function (snippets) {
@@ -70,7 +94,7 @@ clipboard.on("success", function (e) {
         }
     }).then(function (success) {
         console.log(success)
-        $("#my-snippets").append(snippetHtml(snippet));
+        $("#my-snips").append(snippetHtml(snippet));
     });
 });
 
@@ -170,7 +194,7 @@ function setupNewSnippetModal() {
                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
             },
         }).then(function (snippet) {
-            $("#my-snippets").append(snippetHtml(snippet))
+            $("#my-snips").append(snippetHtml(snippet))
             $("#add-snippet-modal").removeClass('is-active')
 
 
