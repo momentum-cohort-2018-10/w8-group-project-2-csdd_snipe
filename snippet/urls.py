@@ -42,7 +42,6 @@ urlpatterns = [
 
     path("api/", include("api.urls")),
     path('__debug__/', include(debug_toolbar.urls)),
-
     path("users/", api_views.UserListView.as_view(),
          name="api_user_list"),
     path('accounts/password/reset/', PasswordResetView.as_view(
@@ -59,5 +58,6 @@ urlpatterns = [
          template_name='registration/password_reset_complete.html'),
          name="password_reset_complete"),
     path('accounts/', include('registration.backends.simple.urls')),
+
 
 ]
