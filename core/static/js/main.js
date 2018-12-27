@@ -91,36 +91,58 @@ let modal = document.getElementById('simpleModal');
 //Get open model button
 let modalBtn = document.getElementById('modalBtn');
 
-//Get close button
-let closeBtn = document.getElementsByClassName('closeBtn')[0];
-
-//listen for open click
-modalBtn.addEventListener('click', openModal);
-
-//listen for close click
-closeBtn.addEventListener('click', closeModal);
-
-//listen for outside click
-window.addEventListener('click', outsideClick);
+// --Modal Window Controls-- //
 
 
-//Function to open modal
+// opens modal when 'view' is clicked
 function openModal() {
-    console.log(123);
-    modal.style.display = 'block';
+    let openBtns = document.querySelectorAll('.button')
+    openBtns.forEach(button => {
+        button.addEventListener('click', event => {
+            let modals = document.querySelectorAll('.modal')
+            modals.forEach(modal =>{
+                if (event.target.getAttribute("data-type") === modal.id) {
+                    modal.style.display = 'block'
+                }
+            })
+        })
+    })
 }
 
-//Function to close modal
+
+// closes modal when 'x' is clicked
 function closeModal() {
-    modal.style.display = 'none';
+    let closeBtns = document.querySelectorAll('.closeBtn')
+    closeBtns.forEach(button => {
+        button.addEventListener('click', event => {
+            let modals = document.querySelectorAll('.modal')
+            modals.forEach(modal => {
+                if (event.target.getAttribute("data-type") === modal.id) {
+                    modal.style.display = 'none'
+                }
+            })
+        })
+    })
 }
 
-//Functio to close modal if outside click
-function outsideClick(e) {
-    if (e.target == modal) {
-        modal.style.display = 'none';
-    }
+
+// clicking outside modal closes modal
+function outsideClick() {
+    document.addEventListener('click', event => {
+        let modals = document.querySelectorAll('.modal')
+        modals.forEach(modal => {
+            if (event.target.id === modal.id) {
+                modal.style.display = 'none'
+            }
+        })
+    })
 }
+
+
+openModal()
+closeModal()
+outsideClick()
+
 
 function setupNewSnippetModal() {
     $("#add-snippet-button").on('click', function () {

@@ -16,6 +16,7 @@ Including another URLconf
 # from django.conf.urls import path, include
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView #RedirectView
 from core import views
 from api import views as api_views
 import snippet
@@ -34,6 +35,9 @@ if snippet.settings.DEBUG:
 
 urlpatterns = [
     path("", views.index, name="home"),
+     path('profile/',
+        TemplateView.as_view(template_name='profile.html'),
+        name='profile'),
     path('admin/', admin.site.urls),
 
     path("api/", include("api.urls")),
