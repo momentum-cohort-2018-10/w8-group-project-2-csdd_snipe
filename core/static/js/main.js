@@ -58,17 +58,19 @@ clipboard.on("success", function (e) {
     snippet.content = e.text;
     $.ajax({
         type: "POST",
-        url: "/api/my_snippets/",
+        url: "/api/snippets/",
         dataType: "json",
         data: {
             content: `${snippet.content} `,
+            author: `${snippet.author}`,
             language: `${snippet.language} `,
             title: `${snippet.title} `,
             "is_copy": true,
             csrfmiddlewaretoken: csrftoken,
         }
     }).then(function (success) {
-        console.log(success);
+        console.log(success)
+        $("#my-snippets").append(snippetHtml(snippet));
     });
 });
 
