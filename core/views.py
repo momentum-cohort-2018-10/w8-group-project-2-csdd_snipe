@@ -6,3 +6,8 @@ def index(request):
     snippets = Snippet.objects.all()
     return render(request, 'index.html', {'snippets': snippets,
                                           })
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master
