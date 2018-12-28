@@ -29,13 +29,14 @@ function snippetHtml(snippet) {
 
 function profileHtml(snippet) {
     return `   
-    <div class="card-body">
+    <div class="card-body" data-pk="${snippet.pk}" data-title="${snippet.title}" data-content="${snippet.content}" data-language="${snippet.language}" data-author="${snippet.author}">
     <h3 class="title">${snippet.title}</h3>
     <p class="username">Author:${ snippet.author}</p>
         <h4 class="language">Language: ${snippet.language}</h4>
-        <p><pre><code class=${snippet.language} class="card-text">${snippet.content}</code></pre></p>
+        <p><pre><code class="${snippet.language} card-text">${snippet.content}</code></pre></p>
+    <button class="edit-snippet-button" class="button is-link">Edit Snippet</button>
+    <button class="delete-snippet-button" class="button is-link">Delete Snippet</button>   
     </div>
-
 `
 }
 
@@ -45,11 +46,37 @@ function profileHtml(snippet) {
 //         $('#user-pic-snips').append(profileImage(snippet))
 // }})
 
-$.get("/api/my_snippets/").then(function (snippets){
+$.get("/api/my_snippets/").then(function (snippets) {
 
     for (let snippet of snippets) {
         $('#user-snips').append(profileHtml(snippet))
-}})
+    }
+    $(".edit-snippet-button").on('click', function (event) {
+        let data = $(event.target).parent().data();
+        $("#edit-snippet-title").val(data.title);
+        $("#edit-snippet-pk").val(data.pk);
+        $("#edit-snippet-language").val(data.language);
+        $("#edit-snippet-content").val(data.content);
+        $("#edit-snippet-modal").addClass('is-active')
+    })
+
+    $(".delete-snippet-button").on('click', function (event) {
+        let data = $(event.target).parent().data();
+        $.ajax({
+            url: "/api/snippets/" + data.pk + "/",
+            method: 'DELETE',
+            contentType: 'application/json',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken)
+            },
+        }).then(function () {
+            let card = $(`.card-body[data-pk="${data.pk}"]`);
+            card.remove();
+        })
+    });
+})
+
+
 
 //search for snippets 
 function searchSnippets() {

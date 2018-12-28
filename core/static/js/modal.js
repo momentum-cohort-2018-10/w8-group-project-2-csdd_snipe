@@ -84,29 +84,40 @@ function setupNewSnippetModal() {
 
 function editSnippetModal() {
     $("#edit-snippet-button").on('click', function () {
+
+
+
         $("#edit-snippet-modal").addClass('is-active')
     })
-    $(".modal-background,.modal-close, #cancel-button").on('click', function (event) {
+    $(".modal-background,.modal-close, .cancel-button").on('click', function (event) {
         event.preventDefault()
         $("#edit-snippet-modal").removeClass('is-active')
     })
     $('#edit-snippet-form').on('submit', function (event) {
         event.preventDefault()
+        let pk = $('#edit-snippet-pk').val();
         let snippet = {
             title: $('#edit-snippet-title').val(),
             content: $('#edit-snippet-content').val(),
+            language: $('#edit-snippet-language').val(),
         }
         $.ajax({
-            url: "/api/snippets/<pk>/",
-            method: 'POST',
+            url: "/api/snippets/" + pk + "/",
+            method: 'PUT',
             data: JSON.stringify(snippet),
             contentType: 'application/json',
-            "is_copy": false,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
             },
         }).then(function (snippet) {
-            $("#my-snips").append(snippetHtml(snippet))
+            let card = $(`.card-body[data-pk="${snippet.pk}"]`);
+            card.data("title", snippet.title);
+            card.data("content", snippet.content);
+
+            card.find(".card-text").text(snippet.content);
+            card.find(".title").text(snippet.title);
+
+            //            $("#user-snips").append(snippetHtml(snippet))
             $("#edit-snippet-modal").removeClass('is-active')
         }
 
