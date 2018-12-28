@@ -59,9 +59,8 @@ public class FileDemo2 {
               <li><a href="{% url "home" %}" class="text-white">Home</a></li>
               <li><a href="{% url "profile" %}" class="text-white">My Profile</a></li>
               {% if user.is_authenticated %}
-              <li><a href="{% url "my_snippets_list" %}" class="text-white">Add new snippet</a></li>
-                <li><a href="{% url "my_snippets_list" %}" class="text-white">My Page</a></li>
-              <li><a href="{% url 'home' %}" class="text-white">Log Out</a></li>
+                <li><a href="{% url "profile" %}" class="text-white">My Page</a></li>
+                <li><a href="{% url 'home' %}" class="text-white">Log Out</a></li>
               {% else %}
                 <li><a href="{% url 'registration_register' %}" class="text-white">Register</a></li>
                 <li><a href="{% url 'auth_login' %}" class="text-white">Log In</a></li>

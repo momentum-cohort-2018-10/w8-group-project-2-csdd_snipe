@@ -130,11 +130,12 @@ function copySnippet() {
         });
     });
 
-
     clipboard.on('error', function (e) {
         console.error('Action:', e.action);
         console.error('Trigger:', e.trigger);
     })
+    // // redirects to profile page
+    // location.href = "profile"
 }
 
 
