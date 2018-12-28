@@ -1,0 +1,135 @@
+
+<!-- this is what i had orginally in my profile page just keeping it for some reference I might need later -->
+{% comment %} {% block content %}
+<div class="d-flex justify-content-between align-items-center">
+    <div class="user-profile">
+        <div id="user-page" class="profile">
+        <div class="user-content">
+        <div class="user-header">
+            <h2>User Name</h2>
+        </div>
+        <div class="user-body">
+            <div class="card example-1 scrollbar-ripe-malinka">
+            <div class="card-body">
+                <h4 id="section1"><strong>Snippet information </strong></h4>
+                <div class="row">
+
+                    <!-- Grid column -->
+                  <div class="col-md-6 mb-4">
+
+                  <div id="user-snips"> 
+                  <div id="add-snippet-modal" class="modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-content">
+                    <div class="box">
+                    <form id="new-snippet-form">
+
+                    <div class="field">
+                    <label class="label" for="new-snippet-title">Title</label>
+                    <div class="control">
+                        <input class="input" type="text" id="new-snippet-title" name="title">
+                    </div>
+                  </div>
+                      
+                  <div class="field">
+                    <label class="label" for="new-snippet-language">Language</label>
+                      <div class="control">
+                      <div class="select">
+                        <select class="new-snippet-language" name="language">
+                          <option value="Python">Python</option>
+                          <option value="JavaScript">JavaScript</option>
+                          <option value="Java">Java</option>
+                          <option value="Ruby">Ruby</option>
+                        </select>
+                      </div>
+                      </div>
+                  </div>
+                    
+
+                  <div class="field">
+                    <label class="label" for="new-snippet-content">Content</label>  
+                    <div class="control">
+                    <textarea class="textarea is-primary" type="text" id="new-snippet-content"></textarea>
+                    </div>
+                      <input class="input"  name="content">
+                    </div>
+                  </div>
+                      
+                    <div class="field is-grouped">
+                      <div class="control">
+                        <button class="button is-link">Submit</button>
+                    </div>
+                    
+                    <div class="control">
+                      <button id="cancel-button" class="button is-text">Cancel</button>
+                    </div>
+                  </div>
+
+                    </form>
+                      <!-- Any other Bulma elements you want -->
+                  </div>
+                    <button class="modal-close is-large" aria-label="close"></button>
+                  </div>
+                    </div>
+
+                    <button id="add-snippet-button" class="button is-link">Add New Snippet</button>
+
+                  </div>
+
+                  </div>  
+                <p></p>
+            </div>
+        </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+   
+ 
+
+ <!-- edit not working right keeping work in a file -->
+
+{% comment %} <div id="edit-snippets"> 
+<div id="edit-snippet-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+  <div class="box">
+  <form id="edit-snippet-form">
+    
+    <div class="field">
+    <label class="label" for="edit-snippet-title">Title</label>
+    <div class="control">
+        <textarea class="textarea is-primary" type="text" id="edit-snippet-title" rows="2">{{ snippet.title }}</textarea>
+    </div>
+</div>     
+<div class="field">
+  <label class="label" for="edit-snippet-content">Content</label>  
+  <div class="control">
+  <textarea class="textarea is-primary" type="text" id="edit-snippet-content">{{ snippet.content }}</textarea>
+  </div>
+    <input class="input"  name="content">
+  </div>
+</div>
+    
+    <div class="field is-grouped">
+    <div class="control">
+    <button class="button is-link">Submit</button>
+  </div>
+  
+  <div class="control">
+    <button id="cancel-button" class="button is-text">Cancel</button>
+  </div>
+</div>
+
+  </form>
+    <!-- Any other Bulma elements you want -->
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+  </div>
+
+<button id="edit-snippet-button" class="button is-link">Edit Snippet</button>
+
+</div>
+
+</div> {% endcomment %}
