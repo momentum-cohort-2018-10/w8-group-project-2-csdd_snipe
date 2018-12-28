@@ -28,6 +28,7 @@
               <div class="card example-1 scrollbar-ripe-malinka">
               <div class="card-body">
                 <p><pre><code class={{ snippet.language }} class="card-text" id="snippet-content-{{snippet.id}}">{{ snippet.content }}</code></pre></p>
+                
                 </div>
                 </div>
             </div>
@@ -64,13 +65,13 @@
     <div class="field">
     <label class="label" for="edit-snippet-title">Title</label>
     <div class="control">
-        <input class="input" type="text" id="edit-snippet-title" name="title">
+        <textarea class="textarea is-primary" type="text" id="edit-snippet-title" rows="2">{{ snippet.title }}</textarea>
     </div>
 </div>     
 <div class="field">
   <label class="label" for="edit-snippet-content">Content</label>  
   <div class="control">
-  <textarea class="textarea is-primary" type="text" id="edit-snippet-content"></textarea>
+  <textarea class="textarea is-primary" type="text" id="edit-snippet-content">{{ snippet.content }}</textarea>
   </div>
     <input class="input"  name="content">
   </div>
@@ -94,7 +95,6 @@
   </div>
 
 <button id="edit-snippet-button" class="button is-link">Edit Snippet</button>
-
 
 </div>
 
