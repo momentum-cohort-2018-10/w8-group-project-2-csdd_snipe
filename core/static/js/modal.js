@@ -14,7 +14,7 @@ function openModal() {
             })
         })
     })
-}
+}0
 
 // closes modal when 'x' is clicked
 function closeModal() {

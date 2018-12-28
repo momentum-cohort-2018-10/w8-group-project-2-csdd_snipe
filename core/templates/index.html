@@ -18,6 +18,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12"> 
+
+        <!-- load all the snippets -->
           {% for snippet in snippets %}  
             <div id="search-results" class="card mb-4 shadow-sm">
             <div class="card-body">
@@ -36,6 +38,8 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                   <button id="modalBtn" class="button" data-type="modal-{{snippet.id}}">View</button> 
+
+                  <!-- view modal -->
                   <div id="modal-{{snippet.id}}" class="modal">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -55,50 +59,52 @@
                   </div>
                 </div>
                   <div id="edit-snippets"> 
-<div id="edit-snippet-modal" class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-  <div class="box">
-  <form id="edit-snippet-form">
-    
-    <div class="field">
-    <label class="label" for="edit-snippet-title">Title</label>
-    <div class="control">
-        <input class="input" type="text" id="edit-snippet-title" name="title">
-    </div>
-</div>     
-<div class="field">
-  <label class="label" for="edit-snippet-content">Content</label>  
-  <div class="control">
-  <textarea class="textarea is-primary" type="text" id="edit-snippet-content"></textarea>
-  </div>
-    <input class="input"  name="content">
-  </div>
-</div>
-    
-    <div class="field is-grouped">
-    <div class="control">
-    <button class="button is-link">Submit</button>
-  </div>
-  
-  <div class="control">
-    <button id="cancel-button" class="button is-text">Cancel</button>
-  </div>
-</div>
 
-  </form>
-    <!-- Any other Bulma elements you want -->
-  </div>
-  <button class="modal-close is-large" aria-label="close"></button>
-</div>
-  </div>
+                  <!-- edit modal -->
+                  <div id="edit-snippet-modal" class="modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-content">
+                    <div class="box">
+                    <form id="edit-snippet-form">
+                      
+                      <div class="field">
+                      <label class="label" for="edit-snippet-title">Title</label>
+                      <div class="control">
+                          <input class="input" type="text" id="edit-snippet-title" name="title">
+                      </div>
+                  </div>     
+                  <div class="field">
+                    <label class="label" for="edit-snippet-content">Content</label>  
+                    <div class="control">
+                    <textarea class="textarea is-primary" type="text" id="edit-snippet-content">yo dude</textarea>
+                    </div>
+                      <input class="input"  name="content">
+                    </div>
+                  </div>
+                      
+                      <div class="field is-grouped">
+                      <div class="control">
+                      <button class="button is-link">Submit</button>
+                    </div>
+                    
+                    <div class="control">
+                      <button id="cancel-button" class="button is-text">Cancel</button>
+                    </div>
+                  </div>
 
-<button id="edit-snippet-button" class="button is-link">Edit Snippet</button>
+                    </form>
+                      <!-- Any other Bulma elements you want -->
+                    </div>
+                    <button class="modal-close is-large" aria-label="close"></button>
+                  </div>
+                    </div>
+
+                  <button id="edit-snippet-button" class="button is-link">Edit Snippet</button>
 
 
-</div>
+                  </div>
 
-</div>
+                  </div>
                 </div>
               <small class="text-muted"></small>
             </div>
