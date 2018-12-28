@@ -128,6 +128,8 @@ function copySnippet() {
             console.log(success)
             $("#my-snips").append(snippetHtml(snippet));
         });
+        // // redirect
+        // location.href = "profile"
     });
 
 
