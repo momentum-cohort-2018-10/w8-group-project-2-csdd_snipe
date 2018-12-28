@@ -1,3 +1,5 @@
+
+
 // --Modal Window Controls-- //
 
 
@@ -91,12 +93,11 @@ function editSnippetModal() {
     $('#edit-snippet-form').on('submit', function (event) {
         event.preventDefault()
         let snippet = {
-            id: $(snippet.id),
             title: $('#edit-snippet-title').val(),
             content: $('#edit-snippet-content').val(),
         }
         $.ajax({
-            url: '/api/snippets/<pk>/',
+            url: "/api/snippets/<pk>/",
             method: 'POST',
             data: JSON.stringify(snippet),
             contentType: 'application/json',
@@ -119,3 +120,4 @@ closeModal()
 outsideClick()
 setupNewSnippetModal()
 editSnippetModal()
+
