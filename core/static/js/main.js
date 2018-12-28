@@ -1,7 +1,7 @@
 let csrftoken = getCookie('csrftoken');
 
-//set up html for dynamic loading
 
+//  html for snippets in index
 function snippetHtml(snippet) {
     return `   
     <div class="card-body">
@@ -21,12 +21,8 @@ function snippetHtml(snippet) {
             </div>
 `
 }
-// function profileImage(snippet){
-//     return`
-//     <img src="https://secure.gravatar.com/avatar/${md5(snippet.author_email)}.jpg?s=150&d=mm&r=g">
-//     `
-// }
 
+// html for snippets in profile
 function profileHtml(snippet) {
     return `   
     <div class="card-body" data-pk="${snippet.pk}" data-title="${snippet.title}" data-content="${snippet.content}" data-language="${snippet.language}" data-author="${snippet.author}">
@@ -40,11 +36,7 @@ function profileHtml(snippet) {
 `
 }
 
-// $.get("/api/my_snippets/").then(function (snippets){
 
-//     for (let snippet of snippets) {
-//         $('#user-pic-snips').append(profileImage(snippet))
-// }})
 
 $.get("/api/my_snippets/").then(function (snippets) {
 

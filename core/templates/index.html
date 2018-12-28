@@ -14,54 +14,61 @@
 
 {% endblock title %}
 {% block content %}
+<main>
   <div id="album" class="album py-5 bg-light">
     <div class="container">
       <div class="row">
         <div class="col-md-12"> 
+        <!-- snippets -->
           {% for snippet in snippets %}  
             <div id="search-results" class="card mb-4 shadow-sm">
-            <div class="card-body">
-              <h3 class="title">{{ snippet.title| truncatewords:8 }}</h3>
-              <img src="{{ snippet.author|gravatar:50 }}" />
-              <p class="username">Author: {{ snippet.author }}</p>
-              <h4 class="language">Language: {{ snippet.language }}</h4>
-              <div class="card example-1 scrollbar-ripe-malinka">
               <div class="card-body">
-                <p><pre><code class={{ snippet.language }} class="card-text" id="snippet-content-{{snippet.id}}">{{ snippet.content }}</code></pre></p>
-                
+                <h3 class="title">{{ snippet.title| truncatewords:8 }}</h3>
+                <img src="{{ snippet.author|gravatar:50 }}" />
+                <p class="username">Author: {{ snippet.author }}</p>
+                <h4 class="language">Language: {{ snippet.language }}</h4>
+                <div class="card example-1 scrollbar-ripe-malinka">
+                  <div class="card-body">
+                    <p><pre><code class={{ snippet.language }} class="card-text" id="snippet-content-{{snippet.id}}">{{ snippet.content }}</code></pre></p>
+                  </div>
                 </div>
+              </div>
+              <div> 
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button id="modalBtn" class="button" data-type="modal-{{snippet.id}}">View</button>
+                    <!-- view modal -->
+                    <div id="modal-{{snippet.id}}" class="modal">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <sapn data-type="modal-{{snippet.id}}" class="closeBtn">&times;</sapn>
+                          <h2>{{ snippet.title }}</h2>
+                        </div>
+                        <div class="modal-body">
+                          <b> {{ snippet.language }} </b>
+                          <p>{{ snippet.content }}</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button  class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta" 
+                          data-language="{{snippet.language}}" data-id="{{snippet.id}}" data-title="{{snippet.title}}" 
+                          data-author="{{snippet.author}}" data-clipboard-target="#snippet-content-{{snippet.id}}"> 
+                          Snip a Copy</button>    
+                          <small class="text-muted"></small>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end view modal -->
+                  </div>
                 </div>
+              </div>
             </div>
-          <div> 
-           
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                  <button id="modalBtn" class="button" data-type="modal-{{snippet.id}}">View</button> 
-                  <div id="modal-{{snippet.id}}" class="modal">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                      <sapn data-type="modal-{{snippet.id}}" class="closeBtn">&times;</sapn>
-                      <h2>{{ snippet.title }}</h2>
-                    </div>
-                    <div class="modal-body">
-                      <b> {{ snippet.language }} </b>
-                      <p>{{ snippet.content }}</p>
-                    </div>
-                    <div class="modal-footer">
-                       <button  class="fa fa-copy copy-button" style="font-size:15px;color:darkmagenta" 
-                        data-language="{{snippet.language}}" data-id="{{snippet.id}}" data-title="{{snippet.title}}" 
-                        data-author="{{snippet.author}}" data-clipboard-target="#snippet-content-{{snippet.id}}"> 
-                        Snip a Copy</button> 
-
-              <small class="text-muted"></small>
-            </div>
-          </div>
-      </div>
-    {% endfor %}
+          {% endfor %}
+          <!-- end snippets -->
+        </div>
       </div>
     </div>
   </div>
-    </main>
+</main>
     <footer class="text-muted">
       <div class="container">
         <p class="float-right">
