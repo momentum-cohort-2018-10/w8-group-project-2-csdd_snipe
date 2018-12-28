@@ -46,39 +46,83 @@
 
 
 <div class="field">
-<label class="label" for="new-snippet-content">Content</label>  
-<div class="control">
-<textarea class="textarea is-primary" type="text" id="new-snippet-content"></textarea>
-</div>
-    <input class="input"  name="content">
-</div>
+    <label class="label" for="new-snippet-content">Content</label>  
+        <div class="control">
+            <textarea class="textarea is-primary" type="text" id="new-snippet-content"></textarea>
+        </div>
+            <input class="input"  name="content">
+        </div>
 </div>
     
 <div class="field is-grouped">
     <div class="control">
-    <button class="button is-link">Submit</button>
-</div>
+        <button class="button is-link">Submit</button>
+    </div>
 
-<div class="control">
-    <button id="cancel-button" class="button is-text">Cancel</button>
-</div>
+    <div class="control">
+        <button id="cancel-button" class="button is-text">Cancel</button>
+    </div>
 </div>
 
 </form>
 
-
-    <!-- Any other Bulma elements you want -->
 </div>
-<button class="modal-close is-large" aria-label="close"></button>
-</div>
+    <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 
-</div>
+    </div>
 
-<button id="add-snippet-button" class="button is-link">Add New Snippet</button>
+        <button id="add-snippet-button" class="button is-link">Add New Snippet</button>
 
-</div>
+    </div>
 
 </div>  
+ <div id="edit-snippets"> 
+<div id="edit-snippet-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+  <div class="box">
+  <form id="edit-snippet-form">
+    <input type="hidden" id="edit-snippet-pk" name="pk"/>
+    <input type="hidden" id="edit-snippet-language" name="language"/>
+
+    <div class="field">
+    <label class="label" for="edit-snippet-title">Title</label>
+    <div class="control">
+        <textarea class="textarea is-primary" type="text" name="title" id="edit-snippet-title" rows="2">{{ snippet.title }}</textarea>
+    </div>
+</div>     
+<div class="field">
+  <label class="label" for="edit-snippet-content">Content</label>  
+  <div class="control">
+  <textarea class="textarea is-primary" type="text" name="content" id="edit-snippet-content">{{ snippet.content }}</textarea>
+  </div>
+  </div>
+</div>
+    
+    <div class="field is-grouped">
+    <div class="control">
+    <button class="button is-link">Submit</button>
+  </div>
+  
+  <div class="control">
+    <button id="cancel-button" class="button is-text">Cancel</button>
+  </div>
+</div>
+
+  </form>
+    <!-- Any other Bulma elements you want -->
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+  </div>
+
+</div>
+
+</div> 
+
+
+
 </div>  
 </div>  
 </div>  
