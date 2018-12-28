@@ -21,6 +21,35 @@ function snippetHtml(snippet) {
             </div>
 `
 }
+// function profileImage(snippet){
+//     return`
+//     <img src="https://secure.gravatar.com/avatar/${md5(snippet.author_email)}.jpg?s=150&d=mm&r=g">
+//     `
+// }
+
+function profileHtml(snippet) {
+    return `   
+    <div class="card-body">
+    <h3 class="title">${snippet.title}</h3>
+    <p class="username">Author:${ snippet.author}</p>
+        <h4 class="language">Language: ${snippet.language}</h4>
+        <p><pre><code class=${snippet.language} class="card-text">${snippet.content}</code></pre></p>
+    </div>
+
+`
+}
+
+// $.get("/api/my_snippets/").then(function (snippets){
+
+//     for (let snippet of snippets) {
+//         $('#user-pic-snips').append(profileImage(snippet))
+// }})
+
+$.get("/api/my_snippets/").then(function (snippets){
+
+    for (let snippet of snippets) {
+        $('#user-snips').append(profileHtml(snippet))
+}})
 
 //search for snippets 
 function searchSnippets() {

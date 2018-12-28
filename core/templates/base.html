@@ -5,7 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
+    <title>import java.io.*;  
+public class FileDemo2 {  
+    public static void main(String[] args) {  
+  
+        String path = "";  
+        boolean bool = false;  
+        try {  
+            // createing  new files  
+            File file  = new File("testFile1.txt");  
+            file.createNewFile();  
+            System.out.println(file);  
+            // createing new canonical from file object  
+            File file2 = file.getCanonicalFile();  
+            // returns true if the file exists  
+            System.out.println(file2);  
+            bool = file2.exists();  
+            // returns absolute pathname  
+            path = file2.getAbsolutePath();  
+            System.out.println(bool);  
+            // if file exists  
+            if (bool) {  
+                // prints  
+                System.out.print(path + " Exists? " + bool);  
+            }  
+        } catch (Exception e) {  
+            // if any error occurs  
+            e.printStackTrace();  
+        }  
+    }  
+}  
         {% block title %}Snippet{% endblock title %}
     </title> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -28,6 +57,7 @@
             <div class="col-sm-4 offset-md-1 py-4">
               <ul class="list-unstyled">
               <li><a href="{% url "home" %}" class="text-white">Home</a></li>
+              <li><a href="{% url "profile" %}" class="text-white">My Profile</a></li>
               {% if user.is_authenticated %}
               <li><a href="{% url "my_snippets_list" %}" class="text-white">Add new snippet</a></li>
                 <li><a href="{% url "my_snippets_list" %}" class="text-white">My Page</a></li>
